@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrisarthi - Your Farming Partner</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='photos/icons/WATERWAYS_logo-preview.png') }}" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='photos/WATERWAYS_logo-preview.png') }}" alt="Agrisarthi Logo">
+            <h1>WATERWAYS</h1>
+        </div>
+        <div class="nav-links">
+            <a href="home.html" class="home-link">HOME</a>
+            <a href="dashboard.html">DASHBOARD</a>
+            <a href="ai-driven-sprinkler.html">AUTOMATED SPRINKLERS</a>
+            <a href="soil-analysis.html">SOIL ANALYSIS</a>
+            <a href="#contact">CONTACT US</a>
+            <div id="google_translate_element"></div>
+        </div>
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hindi-text">आपकी खेती हमारी शक्ति</h1>
+            <p>Empowering farmers with smart agricultural technologies</p>
+            <a href="login.html"><button class="cta-button">Get Started</button></a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Our Services</h2>
+        <div class="feature-cards">
+            <!-- Smart Irrigation -->
+            <div class="feature-card" id="smart-irrigation">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 11H17V13H7V11Z" fill="currentColor"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" fill="currentColor"/>
+                        <path d="M12 6C8.69 6 6 8.69 6 12H18C18 8.69 15.31 6 12 6Z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h3>SMART IRRIGATION</h3>
+                <p>Automated irrigation systems that monitor soil moisture and weather conditions to optimize water usage.</p>
+                <button class="feature-btn">Learn More</button>
+            </div>
+
+            <!-- AI Driven Sprinklers -->
+            <div class="feature-card" id="ai-sprinklers">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 3V5M5.63607 5.63604L7.05029 7.05025M3 12H5M5.63607 18.364L7.05029 16.9497M12 19V21M16.9497 16.9497L18.364 18.364M19 12H21M16.9497 7.05025L18.364 5.63604" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="12" cy="12" r="4" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h3>AUTOMATED SPRINKLERS</h3>
+                <p>Intelligent sprinkler systems that use AI to determine optimal watering patterns based on crop needs.</p>
+                <button class="feature-btn">Learn More</button>
+            </div>
+
+            <!-- Soil Analysis -->
+            <div class="feature-card" id="soil-analysis">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 2H16L22 8V16L16 22H8L2 16V8L8 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 8V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3>SOIL ANALYSIS</h3>
+                <p>Comprehensive soil testing to determine nutrient levels, pH balance, and recommend appropriate fertilizers.</p>
+                <button class="feature-btn">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+  <section class="features-down" id="features">
+    <div class="features-container">
+      <h2 class="section-title">Resources for Farmers</h2>
+      <p class="section-subtitle">Discover valuable resources and tools designed to support your farming journey.</p>
+      
+      <div class="features-grid">
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 3V5M12 19V21M5 12H3M7.05 7.05L5.636 5.636M16.95 7.05L18.364 5.636M7.05 16.95L5.636 18.364M16.95 16.95L18.364 18.364M21 12H19M12 7C9.79086 7 8 8.79086 8 11V12C8 14.2091 9.79086 16 12 16C14.2091 16 16 14.2091 16 12V11C16 8.79086 14.2091 7 12 7Z" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Weather Forecasts</h3>
+          <p>Accurate weather predictions, seasonal forecasts, and climate advisories to plan your farming activities.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M22 6L12 13L2 6" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>AI-Driven Consultation</h3>
+          <p>Connect with agricultural AI-Driven assistant for personalized advice and solutions to your specific farming challenges.</p>
+        </div>
+        
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 9V13.5L15 16.5M12 3C7.03 3 3 7.03 3 12C3 16.97 7.03 21 12 21C16.97 21 21 16.97 21 12C21 7.03 16.97 3 12 3Z" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Seasonal Reminders</h3>
+          <p>Timely alerts and reminders for seasonal farming activities, crop cycles, and important agricultural events.</p>
+        </div>
+        
+        
+      </section>
+
+    <!-- Testimonials Section -->
+
+    <!-- Testimonial Section -->
+<section class="agri-testimonial-section">
+  <div class="agri-testimonial-container">
+      <div class="agri-testimonial-header">
+          <h2 class="agri-testimonial-heading">What Farmers Say About Us</h2>
+          <p class="agri-testimonial-subheading">Real stories from farmers who transformed their agriculture practices with our AI Soil Analysis technology</p>
+      </div>
+      
+      <div class="agri-testimonial-grid">
+          <div class="agri-testimonial-card">
+              <div class="agri-testimonial-quote">"</div>
+              <p class="agri-testimonial-text">The AI Soil Analysis tool completely changed my approach to farming. Before, I was guessing which crops to plant. Now I have scientific data to make informed decisions that have increased my yield by 35%!</p>
+              <div class="agri-testimonial-author">
+                  <img src="{{ url_for('static', filename='photos/farmer-one.jpeg') }}" alt="Farmer" class="agri-testimonial-avatar">
+                  <div class="agri-testimonial-info">
+                      <h3 class="agri-testimonial-name">Rajesh Patel</h3>
+                      <p class="agri-testimonial-location">Gujarat, India</p>
+                      <div class="agri-testimonial-rating">
+                          <i class="fas fa-star agri-testimonial-star"></i>
+                          <i class="fas fa-star agri-testimonial-star"></i>
+                          <i class="fas fa-star agri-testimonial-star"></i>
+                          <i class="fas fa-star agri-testimonial-star"></i>
+                          <i class="fas fa-star agri-testimonial-star"></i>
+                      </div>
+                  </div>
+              </div>
+              <div class="agri-testimonial-impact">
+                  <h4 class="agri-testimonial-impact-title">Impact:</h4>
+                  <p class="agri-testimonial-impact-text">35% increase in wheat yield after correcting soil nutrient deficiencies</p>
+              </div>
+          </div>
+          
+          <div class="agri-testimonial-card">
+              <div class="agri-testimonial-quote">"</div>
+              <p class="agri-testimonial-text">As a farmer who can't read or write, the voice assistant in my native language has been a blessing. I can now understand my soil's needs and get fertilizer recommendations without depending on others.</p>
+              <div class="agri-testimonial-author">
+                  <img src="{{ url_for('static', filename='photos/farmer-two.jpeg') }}" alt="Farmer" class="agri-testimonial-avatar">
+                  <div class="agri-testimonial-info">
+                      <h3 class="agri-testimonial-name">Khilesh telii</h3>
+                      <p class="agri-testimonial-location">Tamil Nadu, India</p>
+                      <div class="agri-testimonial-rating">
+                          <i class="fas fa-star agri-testimonial-star"></i>
+                          <i class="fas fa-star agri-testimonial-star"></i>
+                          <i class="fas fa-star agri-testimonial-star"></i>
+                          <i class="fas fa-star agri-testimonial-star"></i>
+                          <i class="fas fa-star agri-testimonial-star"></i>
+                      </div>
+                  </div>
+              </div>
+              <div class="agri-testimonial-impact">
+                  <h4 class="agri-testimonial-impact-title">Impact:</h4>
+                  <p class="agri-testimonial-impact-text">Reduced fertilizer costs by 40% with targeted application</p>
+              </div>
+          </div>
+          
+          <div class="agri-testimonial-card">
+              <div class="agri-testimonial-quote">"</div>
+              <p class="agri-testimonial-text">The offline functionality is crucial for our remote village. Even with poor connectivity, I can send an SMS and receive soil analysis results. This technology is truly designed for rural India.</p>
+              <div class="agri-testimonial-author">
+                  <img src="{{ url_for('static', filename='photos/farmer-three.jpeg') }}" alt="Farmer" class="agri-testimonial-avatar">
+                  <div class="agri-testimonial-info">
+                      <h3 class="agri-testimonial-name">Mohammed Ismail</h3>
+                      <p class="agri-testimonial-location">Karnataka, India</p>
+                      <div class="agri-testimonial-rating">
+                          <i class="fas fa-star agri-testimonial-star"></i>
+                          <i class="fas fa-star agri-testimonial-star"></i>
+                          <i class="fas fa-star agri-testimonial-star"></i>
+                          <i class="fas fa-star agri-testimonial-star"></i>
+                          <i class="fas fa-star-half-alt agri-testimonial-star"></i>
+                      </div>
+                  </div>
+              </div>
+              <div class="agri-testimonial-impact">
+                  <h4 class="agri-testimonial-impact-title">Impact:</h4>
+                  <p class="agri-testimonial-impact-text">Prevented crop failure by identifying soil pH imbalance early</p>
+              </div>
+          </div>
+      </div>
+      
+      <div class="agri-testimonial-cta">
+          <a href="#download" class="agri-testimonial-button">Join Thousands of Successful Farmers</a>
+      </div>
+  </div>
+</section>
+
+<!--footer-->
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+      <div class="footer-logo">
+        <img src="{{ url_for('static', filename='photos/WATERWAYS_logo-preview.png') }}" alt="Agrisarthi Logo">
+          <h2>WATERWAYS</h2>
+          <p>AI-powered smart farming solutions empowering marginal farmers </br>with real-time soil analysis, irrigation, and satellite-driven agricultural </br>insights for better productivity and sustainability.</p>
+      </div>
+      <div class="footer-links">
+          <h3>Quick Links</h3>
+                <a href="home.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="ai-driven-sprinkler.html">AUTOMATED Sprinklers</a>
+                <a href="soil-analysis.html">Soil Analysis</a>
+                <a href="#contact">Contact Us</a>
+                <div id="google_translate_element"></div>
+      </div>
+      <div class="footer-newsletter">
+          <h3>Stay Updated</h3>
+          <p>Subscribe to our newsletter for farming tips and updates</p>
+          <div class="newsletter-form">
+              <input type="email" placeholder="Your Email Address">
+              <button>Subscribe</button>
+          </div>
+      </div>
+  </div>
+  <div class="footer-bottom">
+      <p>&copy; 2025 WaterWays. All Rights Reserved.</p>
+      <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+      </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>// Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+          document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Add 3D effect to feature cards
+        const cards = document.querySelectorAll('.feature-card');
+        cards.forEach(card => {
+          card.addEventListener('mousemove', e => {
+              const rect = card.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              
+              const centerX = rect.width / 2;
+              const centerY = rect.height / 2;
+              
+              const angleX = (y - centerY) / 20;
+              const angleY = (centerX - x) / 20;
+              
+              card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale3d(1.02, 1.02, 1.02)`;
+          });
+          
+          card.addEventListener('mouseleave', () => {
+              card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+          });
+        });</script>
+        
+
+</body>
+</html>

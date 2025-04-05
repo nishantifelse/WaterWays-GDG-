@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AI-driven Sprinkler Control</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='photos/icons/WATERWAYS_logo-preview.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='soil-analysis.css') }}">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar" style="display: flex; position: fixed; right: 0; left: 0; top: 0;">
+      <div class="logo">
+        <img src="{{ url_for('static', filename='photos/WATERWAYS_logo-preview.png') }}" alt="Agrisarthi Logo">
+        <h1>WATERWAYS</h1>
+      </div>
+      <div class="nav-links">
+        <a href="home.html">HOME</a>
+        <a href="dashboard.html">DASHBOARD</a>
+        <a href="ai-driven-sprinkler.html">AUTOMATED SPRINKLERS</a>
+        <a href="soil-analysis.html" class="soil-analysis-link">SOIL ANALYSIS</a>
+        <a href="#contact">CONTACT US</a>
+        <div id="google_translate_element"></div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <h1>SOIL ANALYSIS</h1>
+        <p>Upload soil images for instant analysis and pesticide recommendations</p>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="main-content">
+        <div class="card upload-section">
+          <h2>Upload Soil Images</h2>
+          <div class="upload-area">
+            <img src="" alt="Uploaded Image" id="img-preview" style="max-height:320px; display:none;">
+            <p class="small-text">Drag and drop soil images here</p>
+            <small class="small-txt">or click to browse (JPG, PNG, max 5MB)</small>
+            <input class="inputImg" id="imageInput" type="file" accept="image/*" onchange="readURL(this)">
+          </div>
+          <button class="analyze-btn js-analyz-btn" onclick="analyze()
+          document.querySelector('.result-js').innerHTML = 'wait analysing..';
+          document.querySelector('.recommendations').innerHTML = 'wait analysing..'; ">Analyze Soil</button>
+        </div>
+
+        <div class="card results-section">
+          <h2>Analysis Results</h2>
+          <div class="results-content result-js" id="result">
+            <p>Upload a soil image and click "Analyze Soil" to see results</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Pesticide Recommendations</h2>
+        <div class="recommendations" id="recommendations">
+          <p>Recommendations will appear here after analysis</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+            <img src="{{ url_for('static', filename='photos/WATERWAYS_logo-preview.png') }}" alt="Agrisarthi Logo">
+          <h2>WATERWAYS</h2>
+          <p>AI-powered smart farming solutions empowering marginal farmers with real-time soil analysis.</p>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <a href="home.html">Home</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="ai-driven-sprinkler.html">AI Driven Sprinklers</a>
+          <a href="soil-analysis.html">Soil Analysis</a>
+          <a href="#contact">Contact Us</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 WaterWays. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+      }
+    </script>
+    
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            document.querySelector("#img-preview").setAttribute("src", e.target.result);
+            document.querySelector("#img-preview").style.display = "block";
+            document.querySelector('.small-text').innerHTML = '';
+          };
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+
+      async function analyze() {
+        console.log("Analyze function called");
+        const imageFile = document.getElementById("imageInput");
+        const resultDiv = document.querySelector(".result-js");
+        const recommendationsDiv = document.getElementById("recommendations");
+
+        if (!imageFile.files[0]) {
+          resultDiv.innerHTML = "Please select an image first";
+          recommendationsDiv.innerHTML = "Please select an image first";
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append("image", imageFile.files[0]);
+
+        try {
+          console.log("Sending fetch request");
+          const response = await fetch("http://127.0.0.1:5000/analyze", {
+            method: "POST",
+            body: formData,
+          });
+
+          if (!response.ok) {
+            throw new Error(await response.text());
+          }
+
+          const result = await response.json();
+          resultDiv.innerHTML = `<strong>Soil Analysis:</strong> ${result.analysis}`;
+          recommendationsDiv.innerHTML = `<strong>Recommendations:</strong> ${result.recommendations}`;
+        } catch (error) {
+          resultDiv.innerText = `Error: ${error.message}`;
+          recommendationsDiv.innerHTML = `Error: ${error.message}`;
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "tnishant710710@gmail.com",
+      "phone": "9523842046",
+      "password": "admin@123",
+      "name": "System Administrator",
+      "role": "admin",
+      "created_at": "2025-01-01T00:00:00Z",
+      "last_login": "2025-03-15T14:30:00Z"
+    },
+    {
+      "id": 2,
+      "username": "user1",
+      "email": "khileshsinghrajput47@gmail.com",
+      "phone": "6265715958",
+      "password": "khilesh@123",
+      "name": "khilesh singh rajput",
+      "role": "user",
+      "created_at": "2025-01-15T00:00:00Z",
+      "last_login": "2025-03-17T09:45:00Z"
+    },
+    {
+      "id": 3,
+      "username": "gardener",
+      "email": "sushobhitbhimge5@gmail.com",
+      "phone": "9770210441",
+      "password": "sushobhit@123",
+      "name": "sushobhit bhimge",
+      "role": "user",
+      "created_at": "2025-02-01T00:00:00Z",
+      "last_login": "2025-03-16T16:20:00Z"
+    }
+  ]
+}

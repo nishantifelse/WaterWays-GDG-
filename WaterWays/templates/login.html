@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Sprinkler System - Login</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='photos/WATERWAYS_logo-preview.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00b894;
+            --primary-light: #55efc4;
+            --primary-dark: #00a884;
+            --secondary: #0984e3;
+            --accent: #6c5ce7;
+            --light: #f8f9fa;
+            --dark: #2d3436;
+            --danger: #d63031;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --text-primary: #2d3436;
+            --text-secondary: #636e72;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(0, 184, 40, 0.8) 0%, rgba(134, 168, 194, 0.8) 100%), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: multiply;
+        }
+        
+        .page-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            height: 600px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            animation: fadeIn 0.7s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .left-panel {
+            flex: 1;
+            background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url('/api/placeholder/1200/1200');
+            background-size: cover;
+            background-position: center;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            box-shadow: 0 10px 20px rgba(0,184,148,0.3);
+        }
+        
+        .brand-name {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .tagline {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 30px;
+            max-width: 80%;
+        }
+        
+        .feature-list {
+            list-style-type: none;
+            margin-bottom: 50px;
+        }
+        
+        .feature-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-icon {
+            background: rgba(255,255,255,0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+        }
+        
+        .water-drops {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        
+        .drop {
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        .drop:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .drop:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            top: 50%;
+            left: 20%;
+            animation-delay: 1s;
+        }
+        
+        .drop:nth-child(3) {
+            width: 120px;
+            height: 120px;
+            top: 30%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .drop:nth-child(4) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 5%;
+            animation-delay: 3s;
+        }
+        
+        .drop:nth-child(5) {
+            width: 90px;
+            height: 90px;
+            bottom: 10%;
+            right: 20%;
+            animation-delay: 4s;
+        }
+        
+        .login-panel {
+            flex: 1;
+            background: var(--white);
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .login-header {
+            margin-bottom: 40px;
+        }
+        
+        .login-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .login-header p {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+        
+        .form-group {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+        
+        .input-container {
+            position: relative;
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0,184,148,0.1);
+            background-color: var(--white);
+        }
+        
+        .form-control::placeholder {
+            color: #b2b2b2;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .custom-checkbox {
+            position: relative;
+            padding-left: 35px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-secondary);
+            user-select: none;
+        }
+        
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+        }
+        
+        .custom-checkbox:hover input ~ .checkmark {
+            background-color: #e0e0e0;
+        }
+        
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        
+        .custom-checkbox .checkmark:after {
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        .forgot-password {
+            text-align: right;
+            margin-top: -25px;
+            margin-bottom: 30px;
+        }
+        
+        .forgot-password a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .forgot-password a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+        
+        .btn-login {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,184,148,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-login:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0,184,148,0.3);
+        }
+        
+        .btn-login:active {
+            transform: translateY(0);
+        }
+        
+        .login-footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .error-message {
+            background-color: rgba(214, 48, 49, 0.1);
+            color: var(--danger);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            font-size: 14px;
+            display: none;
+            border-left: 4px solid var(--danger);
+        }
+        
+        @media (max-width: 992px) {
+            .page-container {
+                flex-direction: column;
+                height: auto;
+                margin: 20px;
+            }
+            
+            .left-panel {
+                padding: 40px 20px;
+                min-height: 400px;
+            }
+            
+            .login-panel {
+                padding: 40px 20px;
+            }
+            
+            .tagline {
+                max-width: 100%;
+                font-size: 32px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo-container {
+                margin-bottom: 20px;
+            }
+            
+            .tagline {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            
+            .feature-list {
+                margin-bottom: 30px;
+            }
+            
+            .login-header h2 {
+                font-size: 24px;
+            }
+        }
+        
+        /* Ripple effect */
+        .ripple {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <div class="left-panel">
+            <div class="water-drops">
+                <div class="drop"></div>
+                <div class="drop"></div>
+                <div class="drop"></div>
+                <div class="drop"></div>
+                <div class="drop"></div>
+            </div>
+            
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-tint fa-2x" style="color: white;"></i>
+                </div>
+                <span class="brand-name">WaterWays</span>
+            </div>
+            
+            <h1 class="tagline">Intelligent Irrigation at Your Fingertips</h1>
+            
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <span>AI-powered watering schedules</span>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud-sun-rain"></i>
+                    </div>
+                    <span>Weather-adaptive irrigation</span>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <span>Eco-friendly water conservation</span>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <span>Remote access and control</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="login-panel">
+            <div class="login-header">
+                <h2>Welcome </h2>
+                <p>Please sign in or sign up to access your smart irrigation system</p>
+            </div>
+            
+            <div class="error-message" id="errorMessage">
+                <i class="fas fa-exclamation-circle"></i> Invalid username or password. Please try again.
+            </div>
+            
+            <form id="loginForm" action="dashboard.html" method="post">
+                <div class="form-group">
+                    <label for="username">Username / Email / Phone</label>
+                    <div class="input-container">
+                        <i class="fas fa-user input-icon"></i>
+                        <input type="text" id="username" class="form-control" name="username" placeholder="Enter your username, email or phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-container">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="password" class="form-control" name="password" placeholder="Enter your password" required>
+                    </div>
+                </div>
+                
+                <div class="remember-me">
+                    <label class="custom-checkbox">
+                        Remember me
+                        <input type="checkbox" id="remember" name="remember">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                
+                <div class="forgot-password">
+                    <a href="#">Forgot password?</a>
+                </div>
+                
+                <button type="submit" class="btn-login" id="loginBtn">Sign In</button>
+            </form>
+            
+            <div class="login-footer">
+                <p>© 2025 WaterWays Technologies. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Create ripple effect on button click
+        document.getElementById('loginBtn').addEventListener('click', function(e) {
+            const button = e.currentTarget;
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+            
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            
+            button.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+        
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Here you would typically make an AJAX call to check credentials
+            checkCredentials(username, password);
+        });
+        
+        function checkCredentials(username, password) {
+            // In a real application, this would be an AJAX call to your server
+            // For this example, we'll simulate loading the user data
+            fetch('/static/user-data/user-data.json')
+                .then(response => response.json())
+                .then(userData => {
+                    const user = userData.users.find(u => 
+                        (u.username === username || u.email === username || u.phone === username) && 
+                        u.password === password
+                    );
+                    
+                    if (user) {
+                        // Successful login
+                        localStorage.setItem('currentUser', JSON.stringify(user));
+                        window.location.href = '../html/home.html';
+                    } else {
+                        // Failed login
+                        document.getElementById('errorMessage').style.display = 'Try Again';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading user data:', error);
+                    document.getElementById('errorMessage').textContent = 'Error connecting to server. Please try again later.';
+                    document.getElementById('errorMessage').style.display = 'block';
+                });
+        }
+    </script>
+</body>
+</html>

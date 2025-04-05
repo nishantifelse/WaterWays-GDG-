@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AI-driven Sprinkler Control</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='photos/icons/WATERWAYS_logo-preview.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='ai-driven-sprinkler.css') }}">
+  </head>
+  <body>
+        <!-- Navbar -->
+        <nav class="navbar" style="display: flex;
+        position: fixed;
+        right: 0;
+        left: 0;
+        top: 0;">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='photos/WATERWAYS_logo-preview.png') }}" alt="Agrisarthi Logo">
+                <h1>WATERWAYS</h1>
+            </div>
+            <div class="nav-links">
+                <a href="home.html">HOME</a>
+                <a href="dashboard.html">DASHBOARD</a>
+                <a href="ai-driven-sprinkler.html" class="ai-driven-link">AUTOMATED SPRINKLERS</a>
+                <a href="soil-analysis.html">SOIL ANALYSIS</a>
+                <a href="#contact">CONTACT US</a>
+                <div id="google_translate_element"></div>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    
+
+
+        <!--control-->
+        <div class="container" style="margin-top: 80px;">
+          <header>
+              <h1>Smart Sprinkler System</h1>
+              <div class="system-status">
+                  <span>System Status:</span>
+                  <div class="status-indicator js-status-indicator"></div>
+                  <span class="js-status">Online</span>
+              </div>
+          </header>
+          
+          <div class="ai-toggle">
+              <span>Sprinkler System:</span>
+              <label class="toggle-switch">
+                  <button class="js-button-on-off button-onn" id="startMotor">ON</button>
+                  <button class="js-button-on-off button-offf" id="stopMotor">OFF</button>
+                  <button id="manualToggle" class="button-auto">Auto</button>
+                  
+              </label>
+          </div>
+          
+          <div class="grid">
+              <div class="zone-card">
+                  <div class="zone-header">
+                      <span class="zone-name">Zone 1: Front Lawn</span>
+                      <span class="zone-status status-off">OFF</span>
+                  </div>
+                  <div class="zone-info">
+                      <p>Last watered: 2 days ago</p>
+                      <p>Soil moisture: <span id="soil_moisture">42%</span></p>
+                  </div>
+                  <div class="zone-actions">
+                      <button class="btn-primary">Start</button>
+                      <a href="#manual-schedule-panel"><button class="btn-secondary">Schedule</button></a>
+                  </div>
+              </div>
+              
+              
+              
+              <div class="zone-card">
+                  <div class="zone-header">
+                      <span class="zone-name">Zone 2: Garden</span>
+                      <span class="zone-status status-off">OFF</span>
+                  </div>
+                  <div class="zone-info">
+                      <p>Last watered: Today</p>
+                      <p>Soil moisture: <span id="soil_moisture">78%</span></p>
+                  </div>
+                  <div class="zone-actions">
+                      <button class="btn-primary">Start</button>
+                      <a href="#manual-schedule-panel"><button class="btn-secondary">Schedule</button></a>
+                  </div>
+              </div>
+              
+          </div>
+          
+          <div class="schedule-panel" id="manual-schedule-panel">
+              <h2>Manual Watering Schedule</h2>
+              <form class="schedule-form">
+                  <div class="form-group">
+                      <label for="zone">Zone</label>
+                      <select id="zone">
+                          <option value="1">Zone 1: Front Lawn</option>
+                          <option value="2">Zone 2: Garden</option>
+                
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="day">Day</label>
+                      <select id="day">
+                          <option value="monday">Monday</option>
+                          <option value="tuesday">Tuesday</option>
+                          <option value="wednesday">Wednesday</option>
+                          <option value="thursday">Thursday</option>
+                          <option value="friday">Friday</option>
+                          <option value="saturday">Saturday</option>
+                          <option value="sunday">Sunday</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="time">Time</label>
+                      <input type="time" id="time" value="06:00">
+                  </div>
+                  <div class="form-group">
+                      <label for="duration">Duration (minutes)</label>
+                      <input type="number" id="duration" min="1" max="60" value="10">
+                  </div>
+                  <div class="form-group" style="display: flex; align-items: flex-end;">
+                      <button type="submit" class="btn-primary">Add Schedule</button>
+                  </div>
+              </form>
+          </div>
+          
+      </div>
+
+
+      <footer style="margin-bottom: -20px; margin-left: -21px; margin-right: -21px; margin-top: 10px;">
+        <div class="footer-content" >
+            <div class="footer-logo" >
+                <img src="{{ url_for('static', filename='photos/WATERWAYS_logo-preview.png') }}" alt="Agrisarthi Logo">
+                <h2>WATERWAYS</h2>
+                <p>AI-powered smart farming solutions empowering marginal farmers </br>with real-time soil analysis, irrigation, and satellite-driven agricultural </br>insights for better productivity and sustainability.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="home.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="ai-driven-sprinkler.html">AI Driven Sprinklers</a>
+                <a href="soil-analysis.html">Soil Analysis</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+            <div class="footer-newsletter">
+                <h3>Stay Updated</h3>
+                <p>Subscribe to our newsletter for farming tips and updates</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your Email Address">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" >
+            <p>&copy; 2025 WaterWays. All Rights Reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+      </footer>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+    </script>
+      
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            const onoffButton = document.querySelector('.js-button-on-off');
+            const statusIndicator = document.querySelector('.js-status-indicator');
+            const viewStatus = document.querySelector('.js-status');
+            const soilMoistureDisplay = document.getElementById('soil_moisture');
+            const manualToggle = document.getElementById("manualToggle");
+            const startMotorBtn = document.getElementById("startMotor");
+            const stopMotorBtn = document.getElementById("stopMotor");
+    
+            // click button for online/offline status
+            onoffButton.addEventListener('click', () => {
+                if(onoffButton.innerHTML === 'ON'){
+                    statusIndicator.classList.add('status-indicator-on');
+                    onoffButton.classList.add('button-on-by-js');
+                    onoffButton.classList.remove('button-off-by-js');
+                } else {
+                    statusIndicator.classList.add('status-indicator-off');
+                    onoffButton.classList.add('button-off-by-js');
+                    onoffButton.classList.remove('button-on-by-js');
+                }
+            });
+
+            // Function to update soil moisture and motor status
+            async function updateStatus() {
+                try {
+                    const response = await fetch('/update');
+                    const data = await response.json();
+                    
+                    soilMoistureDisplay.textContent = data.soil_moisture ? `${data.soil_moisture.toFixed(2)}%` : 'N/A';
+                    
+                    if (data.pump_status === "ON") {
+                        startMotorBtn.classList.add("active");
+                        stopMotorBtn.classList.remove("active");
+                    } else {
+                        startMotorBtn.classList.remove("active");
+                        stopMotorBtn.classList.add("active");
+                    }
+                } catch (error) {
+                    console.error('Error updating status:', error);
+                }
+            }
+    
+            // Auto-refresh every 2.5 seconds
+            setInterval(updateStatus, 2500);
+            updateStatus(); // Initial update
+        });
+
+
+
+    </script>
+  </body>
+</html>

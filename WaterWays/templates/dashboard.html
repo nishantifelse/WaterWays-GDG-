@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Smart Sprinkler Dashboard</title>
+  
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+   
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" style="display: flex;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='photos/WATERWAYS_logo-preview.png') }}" alt="Agrisarthi Logo">
+            <h1>WATERWAYS</h1>
+        </div>
+        <div class="nav-links">
+            <a href="home.html">HOME</a>
+            <a href="dashboard.html" class="dashboard-link">DASHBOARD</a>
+            <a href="ai-driven-sprinkler.html">AUTOMATED SPRINKLERS</a>
+            <a href="soil-analysis.">SOIL ANALYSIS</a>
+            <a href="#contact">CONTACT US</a>
+            <div id="google_translate_element"></div>
+        </div>
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <div class="dashboard-header">
+        <h1 class="dashboard-title">Smart Sprinkler Dashboard <span class="status-indicator"></span></h1>
+    </div>
+    
+    <div class="dashboard-grid">
+        <!-- Weather Data Card -->
+        <div class="data-card">
+            <h2 class="card-title">Weather Conditions</h2>
+            <table class="data-table">
+                <tr>
+                    <td class="data-label">Temperature</td>
+                    <td class="data-value" id="temperature">76°F</td>
+                </tr>
+                <tr>
+                    <td class="data-label">Weather</td>
+                    <td class="data-value" id="weather_condition">Sunny</td>
+                </tr>
+                <tr>
+                    <td class="data-label">Humidity</td>
+                    <td class="data-value" id="humidity">45%</td>
+                </tr>
+                <tr>
+                    <td class="data-label">Wind Speed</td>
+                    <td class="data-value" id="wind_speed">8 mph</td>
+                </tr>
+                <tr>
+                    <td class="data-label">Precipitation Chance</td>
+                    <td class="data-value" id="precipitation">10%</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- Soil Moisture Card -->
+        <div class="data-card">
+            <h2 class="card-title">Soil Moisture Levels</h2>
+            <table class="data-table">
+                <tr>
+                    <td class="data-label">Front Yard</td>
+                    <td class="data-value" id="soil_moisture">65%</td>
+                </tr>
+
+                <tr>
+                    <td class="data-label">Garden</td>
+                    <td class="data-value" id="soil_moisture">78%</td>
+                </tr>
+                
+                <tr>
+                    <td class="data-label">Optimal Range</td>
+                    <td class="data-value">69% - 75%</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- System Status Card -->
+        <div class="data-card">
+            <h2 class="card-title">System Status</h2>
+            <table class="data-table">
+                <tr>
+                    <td class="data-label">Last Watering</td>
+                    <td class="data-value" id="last-watering">Today, 6:30 AM</td>
+                </tr>
+                <tr>
+                    <td class="data-label">Water Pressure</td>
+                    <td class="data-value" id="water-pressure">100 PSI</td>
+                </tr>
+                <tr>
+                    <td class="data-label">Water Saved (AI)</td>
+                    <td class="data-value" id="water-saved">50%</td>
+                </tr>
+                <tr>
+                    <td class="data-label">System Status</td>
+                    <td class="data-value" id="system-status">Online</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- AI Recommendations Card -->
+        <div class="data-card">
+            <h2 class="card-title">AI Recommendations</h2>
+            <table class="data-table">
+                <tr>
+                    <td class="data-label">Front Yard</td>
+                    <td class="data-value" id="front-recommendation">No Action Needed</td>
+                </tr>
+                <tr>
+                    <td class="data-label">Garden</td>
+                    <td class="data-value" id="garden-recommendation">No Action Needed</td>
+                </tr>
+                <tr>
+                    <td class="data-label">Weather Forecast</td>
+                    <td class="data-value" id="forecast">Clear for next 24h</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <p class="refresh-time">Last updated: <span id="update-time">March 18, 2025 10:35 AM</span></p>
+
+    <!--footer-->
+
+    <footer style="margin-bottom: -20px; margin-left: -21px; margin-right: -21px; margin-top: 10px;">
+        <div class="footer-content" >
+            <div class="footer-logo" >
+                <img src="{{ url_for('static', filename='photos/WATERWAYS_logo-preview.png') }}" alt="Agrisarthi Logo">
+                <h2>WATERWAYS</h2>
+                <p>AI-powered smart farming solutions empowering marginal farmers </br>with real-time soil analysis, irrigation, and satellite-driven agricultural </br>insights for better productivity and sustainability.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="home.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="ai-driven-sprinkler.html">AI Driven Sprinklers</a>
+                <a href="soil-analysis.html">Soil Analysis</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+            <div class="footer-newsletter">
+                <h3>Stay Updated</h3>
+                <p>Subscribe to our newsletter for farming tips and updates</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your Email Address">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" >
+            <p>&copy; 2025 WaterWays. All Rights Reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+      </footer>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+    </script>
+      
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <script>
+    async function updateStatus() {
+        try {
+            const response = await fetch('/update');
+            const data = await response.json();
+            document.getElementById('temperature').textContent = data.temperature ? data.temperature.toFixed(2) + "°C" : '0%';
+            document.getElementById('wind_speed').textContent = data.wind_speed ? data.wind_speed.toFixed(2) + " m/s" : '0%';
+            document.getElementById('humidity').textContent = data.humidity ? data.humidity + "%" : '0%';
+            document.getElementById('weather_condition').textContent = data.weather_condition || '0%';
+            document.getElementById('soil_moisture').textContent = data.soil_moisture ? data.soil_moisture.toFixed(2) + "%" : '0%';
+            document.getElementById('pump_temp_state').textContent = data.pump_temp_state;
+            document.getElementById('pump_soil_state').textContent = data.pump_soil_state;
+            document.getElementById('pump_state').textContent = data.pump_state;
+
+            // Set weather icon
+            const weatherIconElement = document.getElementById('weather_icon');
+            if (data.weather_icon) {
+                weatherIconElement.src = `http://openweathermap.org/img/wn/${data.weather_icon}.png`;
+                weatherIconElement.style.display = "inline";
+            } else {
+                weatherIconElement.style.display = "none";
+            }
+        } catch (error) {
+            console.error('Error updating status:', error);
+        }
+    }
+    
+    // Auto-refresh every 2.5 seconds.
+    setInterval(updateStatus, 2500);
+    // Initial update.
+    updateStatus();</script>
+</body>
+</html>
