@@ -76,7 +76,9 @@ bash
 
 
 python water.py 
+
 App will be hosted at: http://127.0.0.1:5000
+
 Flash ESP32 Code
 Use Arduino IDE to upload your ESP32 sketch to collect soil moisture data and control relays.
 
