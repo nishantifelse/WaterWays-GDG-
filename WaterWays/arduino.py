@@ -6,10 +6,10 @@ import threading
 SERIAL_PORT = "COM3" 
 BAUD_RATE = 115200
 SOIL_MOISTURE_FILE = "soil_moisture.txt"
-MAX_RETRIES = 3  # Maximum retries before fallback
-DEFAULT_SOIL_MOISTURE = 100.0  # Default value if sensor read fails
-RECONNECT_ATTEMPTS = 5  # Attempts to reconnect if Arduino disconnects
-READ_INTERVAL = 2  # Interval (seconds) between readings
+MAX_RETRIES = 3  
+DEFAULT_SOIL_MOISTURE = 100.0  
+RECONNECT_ATTEMPTS = 5  
+READ_INTERVAL = 2  
 
 # Function to Connect to Arduino
 def connect_arduino():
@@ -18,12 +18,12 @@ def connect_arduino():
         try:
             print(f"🔄 Attempting to connect to Arduino (Try {attempt}/{RECONNECT_ATTEMPTS})...")
             arduino = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=2)
-            time.sleep(2)  # Allow time for connection
+            time.sleep(2)  
             print(f"Connected to Arduino on {SERIAL_PORT}")
             return arduino
         except Exception as e:
             print(f"Connection attempt {attempt} failed: {e}")
-            time.sleep(2)  # Wait before retrying
+            time.sleep(2) 
     print("Failed to connect to Arduino after multiple attempts.")
     return None
 
@@ -40,7 +40,7 @@ def read_soil_moisture():
             arduino.flushInput()  # Clear buffer before sending request
             time.sleep(0.2)
             arduino.write(b'GET_SOIL\n')  # Request moisture data
-            time.sleep(0.5)  # Allow time for Arduino response
+            time.sleep(0.5)  
             line = arduino.readline().decode().strip()  # Read response
 
             print(f"🔄 Arduino Output: {repr(line)}")
@@ -51,11 +51,11 @@ def read_soil_moisture():
                 return max(0, min(100, moisture_value))  # Ensure range 0-100%
 
             print(f"⚠ Invalid data format: '{line}', retrying... ({attempt}/{MAX_RETRIES})")
-            time.sleep(1)  # Small delay before retrying
+            time.sleep(1)  
 
         except Exception as e:
             print(f"Error reading from Arduino (Attempt {attempt}/{MAX_RETRIES}): {e}")
-            time.sleep(1)  # Small delay before retrying
+            time.sleep(1)  
 
     print("Maximum retries reached! Using last known value or default (100%).")
     return get_last_known_value()
