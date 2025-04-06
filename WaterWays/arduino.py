@@ -98,3 +98,15 @@ def monitor_soil_moisture():
 # Start a separate thread for moisture monitoring
 moisture_thread = threading.Thread(target=monitor_soil_moisture, daemon=True)
 moisture_thread.start()
+
+while True:
+    cmd = input("Enter 'on' to start motor, 'off' to stop, 'exit' to quit: ").strip().lower()
+    if cmd == "on":
+        turn_motor_on()
+    elif cmd == "off":
+        turn_motor_off()
+    elif cmd == "exit":
+        print("🛑 Exiting program.")
+        break
+    else:
+        print("⚠ Invalid command. Use 'on', 'off', or 'exit'.")
