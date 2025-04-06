@@ -99,6 +99,3 @@ Receives nutrient, health, and pesticide suggestions.
 Uses OpenWeather API to fetch rain forecast.
 
 Skips irrigation if rain is expected.
-
-License
-This project is open-source and available under the MIT License.
