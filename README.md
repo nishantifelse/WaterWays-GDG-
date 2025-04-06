@@ -74,8 +74,10 @@ pip freeze > requirements.txt
 Run the Flask app
 bash
 
+#insure that all the library is downloaded and then run both water.py and auduino.py same time 
 
 python water.py 
+python auduino.py #run both water.py and auduino.py same time 
 
 App will be hosted at: http://127.0.0.1:5000
 
