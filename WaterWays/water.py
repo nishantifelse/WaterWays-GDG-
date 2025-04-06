@@ -8,7 +8,6 @@ from flask import Flask, jsonify, render_template, request,redirect,url_for
 import google.generativeai as genai
 from io import BytesIO
 from PIL import Image
-import subprocess
 from twilio.rest import Client
 
 
@@ -22,12 +21,12 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 #Twillio
 TWILIO_ACCOUNT_SID = "AC19fbd429c0f061191c4a902089c0b6e6"
 TWILIO_AUTH_TOKEN = "a8f614dde4509511911bb207f900d9d7"
-TWILIO_WHATSAPP_NUMBER = "whatsapp:+14155238886"  # Twilio Sandbox for WhatsApp
-RECIPIENT_WHATSAPP_NUMBER = "whatsapp:+916265715958"  # Replace with your number
+TWILIO_WHATSAPP_NUMBER = "whatsapp:+14155238886"
+RECIPIENT_WHATSAPP_NUMBER = "whatsapp:+916265715958"
 
 client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
-# --- Weather API Configuration ---
+
 OPENWEATHER_API_KEY = "54578f079e5abf29184b4d8ca0a7e4c5"
 CITY_NAME = "Jaipur"
 OPENWEATHER_URL = f"http://api.openweathermap.org/data/2.5/weather?q={CITY_NAME}&appid={OPENWEATHER_API_KEY}&units=metric"
@@ -39,8 +38,8 @@ LAST_MODIFIED_TIME = 0  # Track last update time
 # --- Water Pump Control Conditions ---
 TEMP_THRESHOLD = 26  # Pump ON if temp >= 26°C
 SOIL_MOISTURE_THRESHOLD = 71  # Pump ON if soil moisture < 71%
-manual_mode = False  # Default mode is auto
-motor_status = "OFF"  # Default motor status
+manual_mode = False  # Default auto
+motor_status = "OFF"  # Default status
 
 # --- Fetch Weather Data ---
 def get_weather_data():
@@ -78,7 +77,7 @@ def get_soil_moisture():
     global LAST_MODIFIED_TIME, LAST_MOISTURE_VALUE
 
     try:
-        # Get the last modification time of the file
+        
         current_modified_time = os.stat(SOIL_MOISTURE_FILE).st_mtime
 
         # If the file hasn't changed, return the last stored value
@@ -89,7 +88,7 @@ def get_soil_moisture():
         with open(SOIL_MOISTURE_FILE, "r") as file:
             new_moisture = float(file.read().strip())
 
-        # Update stored values
+        
         LAST_MODIFIED_TIME = current_modified_time
         LAST_MOISTURE_VALUE = new_moisture
 
@@ -114,7 +113,7 @@ def analyze_soil(image_bytes, prompt):
         print("Error during AI analysis:", e)
         return "Error processing image"
 
-# --- AI Soil Analysis Prompts ---
+# --- Prompts of soil analysis ---
 SOIL_ANALYSIS_PROMPT = """
 You are a soil and crops expert. Give a short soil analysis based on the given soil image.
 Mention soil type, texture, and general fertility in simple terms.
